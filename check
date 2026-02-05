@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktive Checkliste: KI reflektiert nutzen</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --bg: #f4f7f6;
+            --card-bg: #ffffff;
+            --border: #dcdde1;
+            --text: #2f3640;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+        }
+
+        h1 { margin: 0; color: var(--primary); font-size: 2em; }
+        h2 { 
+            color: var(--accent); 
+            font-size: 1.4em; 
+            margin-top: 45px; 
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .item-card {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background: #fff;
+        }
+
+        .item-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        details {
+            margin-bottom: 15px;
+        }
+
+        details summary {
+            font-size: 0.9em;
+            color: var(--accent);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        details summary::before {
+            content: 'ℹ️';
+        }
+
+        .explanation-content {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            margin-top: 8px;
+            border-left: 3px solid var(--accent);
+        }
+
+        /* Smiley Rating System */
+        .rating-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fafafa;
+            padding: 10px 15px;
+            border-radius: 30px;
+            margin-top: 15px;
+        }
+
+        .smileys {
+            display: flex;
+            gap: 15px;
+        }
+
+        .smileys input {
+            display: none;
+        }
+
+        .smileys label {
+            font-size: 1.6em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            filter: grayscale(100%);
+            opacity: 0.4;
+        }
+
+        .smileys input:checked + label {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.3);
+        }
+
+        textarea {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 15px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 60px;
+            box-sizing: border-box;
+        }
+
+        .footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .print-btn {
+            background-color: transparent;
+            color: #7f8c8d;
+            border: 1px solid #7f8c8d;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .print-btn:hover {
+            background-color: #7f8c8d;
+            color: white;
+        }
+
+        @media print {
+            body { padding: 0; background: white; }
+            .container { box-shadow: none; width: 100%; padding: 0; }
+            .print-btn, details summary { display: none; }
+            details[open] .explanation-content { display: block; }
+            .item-card { break-inside: avoid; border: 1px solid #eee; }
+            h2 { page-break-after: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="main-app">
+    <header>
+        <h1>Checkliste: KI reflektiert nutzen</h1>
+        <p>Selbsteinschätzung für Referate, Präsentationen und Seminarformate (ab Jgst. 11)</p>
+    </header>
+
+    <div id="content">
+        <!-- Section 1 -->
+        <h2>1. Klärung vor der KI-Nutzung</h2>
+        <div class="item-card" data-id="s1p1">
+            <span class="item-title">Thema klar eingegrenzt und fachlich präzisiert</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Hast du den Fokus deines Themas so eng gewählt, dass die KI spezifische Antworten geben kann statt nur allgemeines Bla-Bla?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s1p2">
+            <span class="item-title">Zielsetzung des Beitrags definiert</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Soll dein Beitrag informieren, erklären, unterhalten, analysieren oder argumentieren? Das beeinflusst den Prompt.</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s1p3">
+            <span class="item-title">Adressaten und Anlass berücksichtigt</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Ist es für den Unterricht, eine offizielle Präsentation oder ein Prüfungsgespräch gedacht?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s1p4">
+            <span class="item-title">Eigene Leitfragen formuliert</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Welche Kernfragen willst DU beantworten, bevor du die KI überhaupt startest?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s1p5">
+            <span class="item-title">Erwartete fachliche Tiefe geklärt</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Wie tief musst du in die Materie einsteigen (Oberstufenniveau)?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+
+        <!-- Section 2 -->
+        <h2>2. Zielführende Prompts formulieren</h2>
+        <div class="item-card" data-id="s2p1">
+            <span class="item-title">Rolle der KI definiert</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Hast du der KI eine Rolle zugewiesen (z.B. "Handle als Fachexperte für...")?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Welche Rolle?"></textarea>
+        </div>
+        <div class="item-card" data-id="s2p2">
+            <span class="item-title">Arbeitsauftrag eindeutig formuliert</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Ist der Befehl präzise genug (z.B. "Erstelle eine Liste" statt "Mach mal was")?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s2p3">
+            <span class="item-title">Fach, Kontext und Aufgabenformat benannt</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Weiß die KI, in welchem Schulfach wir uns bewegen?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s2p4">
+            <span class="item-title">Erwartetes sprachliches Niveau angegeben</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Vermeide zu komplexe oder zu einfache Sprache durch klare Ansagen (z.B. "Niveau Jahrgangsstufe 11").</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s2p5">
+            <span class="item-title">Strukturvorgaben gemacht</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Gliederung, Stichpunkte oder Argumentationsgang explizit angefordert?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s2p6">
+            <span class="item-title">Umfang klar begrenzt & Zielsetzung festgelegt</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Wie lang soll das Ergebnis sein? Soll es kritisch oder erklärend sein?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+
+        <!-- Section 3 -->
+        <h2>3. Prompts gezielt verfeinern (Refinements)</h2>
+        <div class="item-card" data-id="s3p1">
+            <span class="item-title">Nachfragen zur Präzisierung von Inhalten</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Hast du bei Unklarheiten "nachgehakt", um tiefergehende Infos zu bekommen?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s3p2">
+            <span class="item-title">Differenzierung oder Einordnung gefordert</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Hast du die KI gebeten, verschiedene Perspektiven aufzuzeigen?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s3p3">
+            <span class="item-title">Beispiele, Gegenpositionen oder Einschränkungen erfragt</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">KI neigt zu Einseitigkeit. Hast du aktiv nach "Aber" oder Beispielen gefragt?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s3p4">
+            <span class="item-title">Klärung zentraler Fachbegriffe</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Lass dir schwierige Begriffe von der KI erklären, bevor du sie nutzt.</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s3p5">
+            <span class="item-title">Anpassung an das Präsentationsformat</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Hast du die KI gebeten, Texte in Karteikarten-Format oder Folienstichpunkte umzuwandeln?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+
+        <!-- Section 4 -->
+        <h2>4. Kritische Prüfung der KI-Ergebnisse</h2>
+        <div class="item-card" data-id="s4p1">
+            <span class="item-title">Fachliche Richtigkeit & Plausibilität überprüft</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Macht das inhaltlich Sinn? Gibt es logische Fehler?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s4p2">
+            <span class="item-title">Quellenlage hinterfragt (Analog-Check)</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Gegenprüfung in einem Buch oder einer seriösen Datenbank durchgeführt?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Welche Quelle wurde zur Prüfung genutzt?"></textarea>
+        </div>
+        <div class="item-card" data-id="s4p3">
+            <span class="item-title">Trennung von Fakten, Deutungen und Vereinfachungen</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Hat die KI Fakten mit ihrer eigenen "Meinung" vermischt?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s4p4">
+            <span class="item-title">Übereinstimmung mit dem eigenen Thema kontrolliert</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Passt das Ergebnis wirklich exakt zu deiner ursprünglichen Fragestellung?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+
+        <!-- Section 5 -->
+        <h2>5. Eigenständige Bearbeitung und Auswahl</h2>
+        <div class="item-card" data-id="s5p1">
+            <span class="item-title">Inhalte eigenständig ausgewählt und gewichtet</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Du entscheidest, was wichtig ist, nicht die KI. Was hast du priorisiert?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s5p2">
+            <span class="item-title">Struktur selbst festgelegt oder überarbeitet</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Hast du die KI-Struktur blind übernommen oder sinnvoll angepasst?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s5p3">
+            <span class="item-title">Relevante Aspekte ergänzt / Oberflächliches weggelassen</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Wo bist du tiefer gegangen als die KI? Was war dir zu flach?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s5p4">
+            <span class="item-title">Eigene Formulierungen, Beispiele oder Bewertungen ergänzt</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Klingt der Text nach DIR oder nach einer Maschine?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+
+        <!-- Section 6 -->
+        <h2>6. Transparenz und Quellenangaben</h2>
+        <div class="item-card" data-id="s6p1">
+            <span class="item-title">KI als Hilfsmittel genutzt, nicht als Autor</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Bist du der Chef des Prozesses geblieben?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s6p2">
+            <span class="item-title">Alle verwendeten Prompts dokumentiert</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Hast du die wichtigsten Befehle kopiert und gespeichert?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s6p3">
+            <span class="item-title">Zentrale KI-Rohtexte gesichert</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Wichtig für die Nachvollziehbarkeit bei Rückfragen durch Lehrkräfte.</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s6p4">
+            <span class="item-title">KI-Nutzung korrekt angegeben</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Entsprechend der Schulvorgaben (z.B. im Quellenverzeichnis) deklariert?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s6p5">
+            <span class="item-title">Eigene Leistung klar erkennbar gemacht</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Wird deutlich, was von der KI kommt und was deine eigene Analyse ist?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+
+        <!-- Section 7 -->
+        <h2>7. Vorbereitung auf Nachfragen und Diskussion</h2>
+        <div class="item-card" data-id="s7p1">
+            <span class="item-title">Themenwahl & Auswahl fachlich begründen können</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Kannst du erklären, warum du genau diese Punkte gewählt hast?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s7p2">
+            <span class="item-title">Quellenwahl reflektieren</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Kannst du begründen, warum du der KI vertraut hast (oder wo nicht)?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s7p3">
+            <span class="item-title">Fachbegriffe sicher erklären</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Weißt du, was die Wörter bedeuten, die die KI vorgeschlagen hat?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s7p4">
+            <span class="item-title">Argumente verteidigen oder relativieren können</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Bist du bereit für eine kritische Diskussion zum Thema?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+
+        <!-- Section 8 -->
+        <h2>8. Abschließende Selbstkontrolle</h2>
+        <div class="item-card" data-id="s8p1">
+            <span class="item-title">Ich verstehe alle Inhalte fachlich.</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Die wichtigste Regel: Benutze nichts, was du nicht selbst verstehst.</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s8p2">
+            <span class="item-title">Ich kann Zusammenhänge frei erklären.</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Könntest du dein Thema ohne Spickzettel einem Freund erklären?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s8p3">
+            <span class="item-title">Präsentationsmedien unterstützen meine Argumentation.</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Sind die Folien nur Deko oder helfen sie dem Verständnis?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+        <div class="item-card" data-id="s8p4">
+            <span class="item-title">Ich bin in der Lage, ohne KI zu antworten.</span>
+            <details><summary>Erklärung</summary><div class="explanation-content">Sicherheitstest: Wenn die KI lügt, merkst du es?</div></details>
+            <div class="rating-row"><span>Umsetzung:</span><div class="smileys"></div></div>
+            <textarea placeholder="Notizen..."></textarea>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Verantwortung, Auswahl und Argumentation liegen bei dir.</p>
+        <button class="print-btn" onclick="window.print()">Als PDF speichern (DIN A4)</button>
+    </div>
+</div>
+
+<script>
+    const SMILEYS = ['😞', '🙁', '😐', '🙂', '🤩'];
+    const APP_ID = 'ki_checkliste_v3_full';
+
+    function initChecklist() {
+        const containers = document.querySelectorAll('.rating-row .smileys');
+        
+        containers.forEach((container) => {
+            const cardId = container.closest('.item-card').dataset.id;
+            
+            SMILEYS.forEach((smiley, index) => {
+                const radioId = `r_${cardId}_${index}`;
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.name = `rating_${cardId}`;
+                input.id = radioId;
+                input.value = index + 1;
+                input.dataset.persist = `radio_${cardId}`;
+
+                const label = document.createElement('label');
+                label.setAttribute('for', radioId);
+                label.innerText = smiley;
+                label.title = `Stufe ${index + 1}`;
+
+                container.appendChild(input);
+                container.appendChild(label);
+            });
+        });
+
+        loadData();
+        setupAutoSave();
+    }
+
+    function setupAutoSave() {
+        document.getElementById('main-app').addEventListener('input', () => {
+            const data = {};
+            
+            // Radios speichern
+            document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+                data[radio.name] = radio.value;
+            });
+
+            // Textareas speichern
+            document.querySelectorAll('.item-card').forEach(card => {
+                const id = card.dataset.id;
+                const text = card.querySelector('textarea').value;
+                data[`text_${id}`] = text;
+            });
+
+            localStorage.setItem(APP_ID, JSON.stringify(data));
+        });
+    }
+
+    function loadData() {
+        const raw = localStorage.getItem(APP_ID);
+        if (!raw) return;
+
+        const data = JSON.parse(raw);
+
+        // Radios wiederherstellen
+        Object.keys(data).forEach(key => {
+            if (key.startsWith('rating_')) {
+                const val = data[key];
+                const radio = document.querySelector(`input[name="${key}"][value="${val}"]`);
+                if (radio) radio.checked = true;
+            }
+            if (key.startsWith('text_')) {
+                const id = key.replace('text_', '');
+                const card = document.querySelector(`.item-card[data-id="${id}"]`);
+                if (card) {
+                    card.querySelector('textarea').value = data[key];
+                }
+            }
+        });
+    }
+
+    // Start
+    window.onload = initChecklist;
+</script>
+
+</body>
+</html>
