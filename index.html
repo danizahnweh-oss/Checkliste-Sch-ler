@@ -1,0 +1,532 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="de"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Interaktive Checkliste: KI reflektiert nutzen&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--primary: #2c3e50;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--secondary: #34495e;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--accent: #3498db;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--bg: #f4f7f6;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--card-bg: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--border: #dcdde1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--text: #2f3640;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--bg);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 900px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--card-bg);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 40px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 20px rgba(0,0,0,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>header {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 3px solid var(--primary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 40px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>h1 { margin: 0; color: var(--primary); font-size: 2em; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>h2 {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--accent);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.4em;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 45px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-bottom: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.item-card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 25px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.item-title {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1em;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>details {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>details summary {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9em;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>list-style: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>details summary::before {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>content: 'ℹ️';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.explanation-content {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #f8f9fa;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.95em;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-left: 3px solid var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Smiley Rating System */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.rating-row {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #fafafa;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.smileys {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.smileys input {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.smileys label {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.6em;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>filter: grayscale(100%);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.4;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.smileys input:checked + label {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>filter: grayscale(0%);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>opacity: 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: scale(1.3);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>textarea {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: inherit;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resize: vertical;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-height: 60px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.footer {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 60px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-top: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-top: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.print-btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: transparent;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #7f8c8d;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #7f8c8d;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9em;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.print-btn:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #7f8c8d;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>@media print {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>body { padding: 0; background: white; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.container { box-shadow: none; width: 100%; padding: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.print-btn, details summary { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>details[open] .explanation-content { display: block; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.item-card { break-inside: avoid; border: 1px solid #eee; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>h2 { page-break-after: avoid; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="container" id="main-app"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;Checkliste: KI reflektiert nutzen&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Selbsteinschätzung für Referate, Präsentationen und Seminarformate (ab Jgst. 11)&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Section 1 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;1. Klärung vor der KI-Nutzung&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s1p1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Thema klar eingegrenzt und fachlich präzisiert&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Hast du den Fokus deines Themas so eng gewählt, dass die KI spezifische Antworten geben kann statt nur allgemeines Bla-Bla?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s1p2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Zielsetzung des Beitrags definiert&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Soll dein Beitrag informieren, erklären, unterhalten, analysieren oder argumentieren? Das beeinflusst den Prompt.&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s1p3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Adressaten und Anlass berücksichtigt&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Ist es für den Unterricht, eine offizielle Präsentation oder ein Prüfungsgespräch gedacht?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s1p4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Eigene Leitfragen formuliert&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Welche Kernfragen willst DU beantworten, bevor du die KI überhaupt startest?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s1p5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Erwartete fachliche Tiefe geklärt&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Wie tief musst du in die Materie einsteigen (Oberstufenniveau)?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Section 2 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;2. Zielführende Prompts formulieren&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s2p1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Rolle der KI definiert&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Hast du der KI eine Rolle zugewiesen (z.B. "Handle als Fachexperte für...")?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Welche Rolle?"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s2p2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Arbeitsauftrag eindeutig formuliert&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Ist der Befehl präzise genug (z.B. "Erstelle eine Liste" statt "Mach mal was")?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s2p3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Fach, Kontext und Aufgabenformat benannt&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Weiß die KI, in welchem Schulfach wir uns bewegen?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s2p4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Erwartetes sprachliches Niveau angegeben&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Vermeide zu komplexe oder zu einfache Sprache durch klare Ansagen (z.B. "Niveau Jahrgangsstufe 11").&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s2p5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Strukturvorgaben gemacht&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Gliederung, Stichpunkte oder Argumentationsgang explizit angefordert?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s2p6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Umfang klar begrenzt &amp; Zielsetzung festgelegt&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Wie lang soll das Ergebnis sein? Soll es kritisch oder erklärend sein?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Section 3 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;3. Prompts gezielt verfeinern (Refinements)&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s3p1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Nachfragen zur Präzisierung von Inhalten&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Hast du bei Unklarheiten "nachgehakt", um tiefergehende Infos zu bekommen?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s3p2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Differenzierung oder Einordnung gefordert&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Hast du die KI gebeten, verschiedene Perspektiven aufzuzeigen?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s3p3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Beispiele, Gegenpositionen oder Einschränkungen erfragt&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;KI neigt zu Einseitigkeit. Hast du aktiv nach "Aber" oder Beispielen gefragt?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s3p4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Klärung zentraler Fachbegriffe&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Lass dir schwierige Begriffe von der KI erklären, bevor du sie nutzt.&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s3p5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Anpassung an das Präsentationsformat&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Hast du die KI gebeten, Texte in Karteikarten-Format oder Folienstichpunkte umzuwandeln?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Section 4 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;4. Kritische Prüfung der KI-Ergebnisse&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s4p1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Fachliche Richtigkeit &amp; Plausibilität überprüft&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Macht das inhaltlich Sinn? Gibt es logische Fehler?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s4p2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Quellenlage hinterfragt (Analog-Check)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Gegenprüfung in einem Buch oder einer seriösen Datenbank durchgeführt?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Welche Quelle wurde zur Prüfung genutzt?"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s4p3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Trennung von Fakten, Deutungen und Vereinfachungen&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Hat die KI Fakten mit ihrer eigenen "Meinung" vermischt?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s4p4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Übereinstimmung mit dem eigenen Thema kontrolliert&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Passt das Ergebnis wirklich exakt zu deiner ursprünglichen Fragestellung?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Section 5 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;5. Eigenständige Bearbeitung und Auswahl&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s5p1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Inhalte eigenständig ausgewählt und gewichtet&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Du entscheidest, was wichtig ist, nicht die KI. Was hast du priorisiert?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s5p2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Struktur selbst festgelegt oder überarbeitet&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Hast du die KI-Struktur blind übernommen oder sinnvoll angepasst?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s5p3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Relevante Aspekte ergänzt / Oberflächliches weggelassen&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Wo bist du tiefer gegangen als die KI? Was war dir zu flach?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s5p4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Eigene Formulierungen, Beispiele oder Bewertungen ergänzt&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Klingt der Text nach DIR oder nach einer Maschine?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Section 6 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;6. Transparenz und Quellenangaben&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s6p1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;KI als Hilfsmittel genutzt, nicht als Autor&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Bist du der Chef des Prozesses geblieben?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s6p2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Alle verwendeten Prompts dokumentiert&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Hast du die wichtigsten Befehle kopiert und gespeichert?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s6p3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Zentrale KI-Rohtexte gesichert&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Wichtig für die Nachvollziehbarkeit bei Rückfragen durch Lehrkräfte.&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s6p4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;KI-Nutzung korrekt angegeben&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Entsprechend der Schulvorgaben (z.B. im Quellenverzeichnis) deklariert?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s6p5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Eigene Leistung klar erkennbar gemacht&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Wird deutlich, was von der KI kommt und was deine eigene Analyse ist?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Section 7 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;7. Vorbereitung auf Nachfragen und Diskussion&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s7p1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Themenwahl &amp; Auswahl fachlich begründen können&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Kannst du erklären, warum du genau diese Punkte gewählt hast?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s7p2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Quellenwahl reflektieren&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Kannst du begründen, warum du der KI vertraut hast (oder wo nicht)?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s7p3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Fachbegriffe sicher erklären&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Weißt du, was die Wörter bedeuten, die die KI vorgeschlagen hat?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s7p4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Argumente verteidigen oder relativieren können&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Bist du bereit für eine kritische Diskussion zum Thema?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Section 8 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;8. Abschließende Selbstkontrolle&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s8p1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Ich verstehe alle Inhalte fachlich.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Die wichtigste Regel: Benutze nichts, was du nicht selbst verstehst.&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s8p2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Ich kann Zusammenhänge frei erklären.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Könntest du dein Thema ohne Spickzettel einem Freund erklären?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s8p3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Präsentationsmedien unterstützen meine Argumentation.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Sind die Folien nur Deko oder helfen sie dem Verständnis?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="item-card" data-id="s8p4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="item-title"&gt;Ich bin in der Lage, ohne KI zu antworten.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;details&gt;&lt;summary&gt;Erklärung&lt;/summary&gt;&lt;div class="explanation-content"&gt;Sicherheitstest: Wenn die KI lügt, merkst du es?&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="rating-row"&gt;&lt;span&gt;Umsetzung:&lt;/span&gt;&lt;div class="smileys"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea placeholder="Notizen..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="footer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Verantwortung, Auswahl und Argumentation liegen bei dir.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="print-btn" onclick="window.print()"&gt;Als PDF speichern (DIN A4)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const SMILEYS = ['😞', '🙁', '😐', '🙂', '🤩'];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const APP_ID = 'ki_checkliste_v3_full';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function initChecklist() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const containers = document.querySelectorAll('.rating-row .smileys');</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>containers.forEach((container) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const cardId = container.closest('.item-card').dataset.id;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>SMILEYS.forEach((smiley, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const radioId = `r_${cardId}_${index}`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const input = document.createElement('input');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>input.type = 'radio';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>input.name = `rating_${cardId}`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>input.id = radioId;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>input.value = index + 1;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>input.dataset.persist = `radio_${cardId}`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const label = document.createElement('label');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>label.setAttribute('for', radioId);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>label.innerText = smiley;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>label.title = `Stufe ${index + 1}`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>container.appendChild(input);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>container.appendChild(label);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>loadData();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setupAutoSave();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setupAutoSave() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('main-app').addEventListener('input', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const data = {};</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Radios speichern</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('input[type="radio"]:checked').forEach(radio =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data[radio.name] = radio.value;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Textareas speichern</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.item-card').forEach(card =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const id = card.dataset.id;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const text = card.querySelector('textarea').value;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data[`text_${id}`] = text;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem(APP_ID, JSON.stringify(data));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function loadData() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const raw = localStorage.getItem(APP_ID);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!raw) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const data = JSON.parse(raw);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Radios wiederherstellen</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Object.keys(data).forEach(key =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (key.startsWith('rating_')) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const val = data[key];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const radio = document.querySelector(`input[name="${key}"][value="${val}"]`);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (radio) radio.checked = true;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (key.startsWith('text_')) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const id = key.replace('text_', '');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const card = document.querySelector(`.item-card[data-id="${id}"]`);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (card) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>card.querySelector('textarea').value = data[key];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Start</p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.onload = initChecklist;</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
